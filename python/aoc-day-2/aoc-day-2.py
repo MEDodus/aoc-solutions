@@ -49,6 +49,8 @@ def check_report(report):
 
 def remove_level(report):
     for i in range(len(report)):
+        # Syntax to remove element from list in python is list[:i] + list[i + 1 :]
+        # list[:i] is the list from the beginning to the element at index i, list[i + 1 :] is the list from the element at index i + 1 to the end
         removed_report = report[:i] + report[i + 1 :]
         if check_report(removed_report):
             return True
