@@ -4,6 +4,11 @@ def main():
         for line in file:
             file_list += list(line.strip())
 
+    # Both parts actually build the memory string, however, one optimization
+    # is to use a list of indices or a list of tuples in case of part 2
+    # this cuts down on the memory usage of the solution because the 'memory'
+    # string is not being built and rebuilt each time a file is shifted
+
     # Part 1
     part_1(file_list)
 
