@@ -76,9 +76,6 @@ def print_checksum(memory):
 
 
 def shift_file(memory, free_space_map, file_location_map):
-    if not file_location_map or not free_space_map:
-        return memory
-
     # Get next rightmost file to check if it can be shifted to free space
     file_location = file_location_map.pop(len(file_location_map) - 1)
     file_size = file_location[1] - file_location[0] + 1
