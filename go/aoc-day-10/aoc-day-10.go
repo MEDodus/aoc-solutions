@@ -77,6 +77,8 @@ func dfs_with_set(matrix [][]byte, i int, j int, index int, visited map[Tuple]bo
 		return 0
 	}
 
+	// _ is discard, go variables must be used otherwise use _
+	// _, ok syntax will assign the value to _ and if it exists it will assign true to ok
 	_, ok := visited[Tuple{i, j}]
 	if matrix[i][j] == '9' && !ok {
 		visited[Tuple{i, j}] = true
