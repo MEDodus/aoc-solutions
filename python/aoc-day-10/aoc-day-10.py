@@ -48,8 +48,6 @@ def dfs(topo_map, i, j, index):
     elif topo_map[i][j] == "9":
         return 1
     else:
-        # Same reasoning as in dfs_with_set
-        topo_map[i][j] = "X"
         possible_trails = 0
 
         # Check all possible directions if they are in bounds for next number in sequence (index + 1)
@@ -58,8 +56,6 @@ def dfs(topo_map, i, j, index):
         possible_trails += dfs(topo_map, i, j - 1, index + 1)
         possible_trails += dfs(topo_map, i, j + 1, index + 1)
 
-        # Unvisit the node
-        topo_map[i][j] = str(index)
         return possible_trails
 
 
@@ -73,10 +69,6 @@ def dfs_with_set(topo_map, i, j, index):
         visited.add((i, j))
         return 1
     else:
-        # Mark the node as visited, not this is not the same as the visited set
-        # Since we are using recursive dfs, we need to mark for sake of not
-        # having a stack overflow, visited set makes sure we don't count a 9 node twice
-        topo_map[i][j] = "X"
         possible_trails = 0
 
         # Check all possible directions if they are in bounds for next number in sequence (index + 1)
@@ -85,8 +77,6 @@ def dfs_with_set(topo_map, i, j, index):
         possible_trails += dfs_with_set(topo_map, i, j - 1, index + 1)
         possible_trails += dfs_with_set(topo_map, i, j + 1, index + 1)
 
-        # Unvisit the node
-        topo_map[i][j] = str(index)
         return possible_trails
 
 

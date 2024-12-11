@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func learning_go() {
 	fmt.Println("Hello, World!")
 	fmt.Println(concat("Hello, ", "World!"))
 
