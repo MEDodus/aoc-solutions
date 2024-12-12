@@ -41,9 +41,13 @@ def part_2(topo_map):
 
 
 def dfs(topo_map, i, j, index):
-    if i < 0 or j < 0 or i >= len(topo_map) or j >= len(topo_map[i]):
-        return 0
-    if topo_map[i][j] != str(index):
+    if (
+        i < 0
+        or j < 0
+        or i >= len(topo_map)
+        or j >= len(topo_map[i])
+        or topo_map[i][j] != str(index)
+    ):
         return 0
     elif topo_map[i][j] == "9":
         return 1
