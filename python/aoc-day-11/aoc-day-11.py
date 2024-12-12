@@ -8,31 +8,30 @@ def main():
     with open("stones.txt", "r") as file:
         for line in file:
             stones += line.strip().split()
-    print(stones)
 
     # Recursive solution using map to memoize
     time_taken = time.time()
     sum = 0
-    for stone in stones:
-        new_stone = stone[:]
-        sum += recursive_blink(new_stone, 75)
+    stones_copy = stones[:]
+    for stone in stones_copy:
+        sum += recursive_blink(stone, 75)
     print(sum)
     print(f"Time taken for recursive solution: {time.time() - time_taken}")
 
-    # Iterative solution
-    time_taken = time.time()
-    stone_map = {}
-    for stone in stones:
-        # add 1 to key if it exists, else add key to map
-        if stone in stone_map:
-            stone_map[stone] += 1
-        else:
-            stone_map[stone] = 1
-
-    for _ in range(75):
-        stone_map = part_2(stone_map)
-    print(sum(stone_map.values()))
-    print(f"Time taken for iterative solution: {time.time() - time_taken}")
+    # Iterative solution, weird error objects in stones are being mutated by above code
+    # Uncomment below and comment out above code to run
+    # time_taken = time.time()
+    # stone_map = {}
+    # for stone in stones:
+    #     # add 1 to key if it exists, else add key to map
+    #     if stone in stone_map:
+    #         stone_map[stone] += 1
+    #     else:
+    #         stone_map[stone] = 1
+    # for _ in range(75):
+    #     stone_map = part_2(stone_map)
+    # print(sum(stone_map.values()))
+    # print(f"Time taken for iterative solution: {time.time() - time_taken}")
 
 
 def recursive_blink(stone, blinks):
