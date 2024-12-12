@@ -31,12 +31,8 @@ def main():
 
     for _ in range(75):
         stone_map = part_2(stone_map)
-    # print(stone_map)
     print(sum(stone_map.values()))
     print(f"Time taken for iterative solution: {time.time() - time_taken}")
-
-    # Part 1
-    # part_1(stones, 75)
 
 
 def recursive_blink(stone, blinks):
@@ -62,30 +58,6 @@ def recursive_blink(stone, blinks):
         num *= 2024
         memoize[(stone, blinks)] = recursive_blink(str(num), blinks - 1)
         return memoize[(stone, blinks)]
-
-
-def part_1(stones, blinks):
-    for i in range(blinks):
-        start_time = time.time()
-        new_stones = []
-        for j in range(len(stones)):
-            if stones[j] == "0":
-                new_stones.append("1")
-            elif len(stones[j]) % 2 == 0:
-                first_half = stones[j][: len(stones[j]) // 2]
-                second_half = stones[j][len(stones[j]) // 2 :]
-                if second_half[0] == "0":
-                    second_half = remove_leading_zeros(second_half)
-                new_stones.append(first_half)
-                new_stones.append(second_half)
-            else:
-                num = int(stones[j])
-                num *= 2024
-                new_stones.append(str(num))
-        print(f"Time taken for iteration {i + 1}: {time.time() - start_time}")
-        stones = new_stones
-
-    print(len(stones))
 
 
 def part_2(stone_map):
